@@ -1,0 +1,16 @@
+**ENDPOINTS DE licenses** 
+CRIANDO uma rota alinhada de licenses com game
+
+1- listar as licenças
+GET /games/:game_id/licenses
+
+2- cadastrar uma licença
+POST /games/:game_id/licenses
+
+3- pegar uma licença específica, atualizar e deletar
+GET /licenses/:id
+
+PATCH /licenses/:id
+
+DELETE /licenses/:id
+
