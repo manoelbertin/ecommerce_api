@@ -21,4 +21,7 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
+  # criando um apelido para o "behaves like" pq estava vindo "LIKE LIKE" p/ trazer só 1 LIKE
+  config.alias_it_behaves_like_to :it_has_behavior_of, "has behavior of"
+  # bundle exec rspec spec/models/license_spec.rb -f d                     "format document"
 end
