@@ -11,7 +11,8 @@ module Admin
 
     def call
       fix_pagination_values
-      filtered = @searchable_model.search_by_name(@params.dig(:search, :name))
+      filtered = search_records(@searchable_model)
+      #filtered = @searchable_model.search_by_name(@params.dig(:search, :name))
       @records = filtered.order(@params[:order].to_h).paginate(@pagination[:page], 
         @pagination[:length]) 
 
@@ -20,6 +21,20 @@ module Admin
     end
 
     private
+
+    def search_records(searched)
+      return searched  unless @params.has_key?(:search)
+      @params[:search].each do |key, value|
+        searched = searched.like(key, value)
+      end
+      searched
+    end
+
+    def set_pagination_attributes(total_filtered)
+      total_pages = (total_filtered / @params[:length].to_f).ceil
+      @pagination.merge!(page: @params[:page], length: @records.count,
+                        total: total_filtered, total_pages: total_pages)
+    end
 
     def fix_pagination_values
       @pagination[:page] = @searchable_model.model::DEFAULT_PAGE if @pagination[:page] <= 0
