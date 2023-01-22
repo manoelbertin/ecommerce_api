@@ -1,6 +1,6 @@
 module Admin::V1
   class CategoriesController < ApiController
-    before_action :load_category, only: [:show]
+    before_action :load_category, only: [:show, :update, :destroy]
 
     def index
       @loading_service = Admin::ModelLoadingService.new(Category.all, searchable_params)
@@ -20,7 +20,6 @@ module Admin::V1
     end
 
     def update
-      @category = Category.find(params[:id])
       @category.attributes = category_params
       
       @category.save!
@@ -30,7 +29,6 @@ module Admin::V1
     end
 
     def destroy
-      @category = Category.find(params[:id])
       @category.destroy!
     rescue
       render_error(fields: @category.errors.messages)
