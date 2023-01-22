@@ -6,6 +6,11 @@ Rails.application.routes.draw do
       get "home" => "home#index"
       resources :categories
       resources :products
+      # GET POST /admin/v1/games/:game_id/licences  <<= listar e cadastrar id_game
+      # GET PATCH DELETE /admin/v1/licenses/:id
+      resources :games, only: [], shallow: true do
+        resources :licenses
+      end
     end
   end
 

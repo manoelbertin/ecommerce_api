@@ -12,6 +12,8 @@ module Admin::V1
     rescue Admin::ProductSavingService::NotSavedProductError
       render_error(fields: @saving_service.errors)
     end
+    
+    def show; end
 
     def update
       run_service
@@ -45,7 +47,8 @@ module Admin::V1
 
     def product_params
       return {} unless params.has_key?(:product)
-      permitted_params = params.require(:product).permit(:id, :name, :description, :image, :price, :productable)
+      permitted_params = params.require(:product).permit(:id, :name, :description, :image, :price, :productable,
+                                                          :status, :featured, category_ids: [])
       permitted_params.merge(productable_params)
     end
 

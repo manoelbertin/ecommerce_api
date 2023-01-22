@@ -12,7 +12,6 @@ module Admin
     def call
       fix_pagination_values
       filtered = search_records(@searchable_model)
-      #filtered = @searchable_model.search_by_name(@params.dig(:search, :name))
       @records = filtered.order(@params[:order].to_h).paginate(@pagination[:page], 
         @pagination[:length]) 
 

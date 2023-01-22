@@ -11,7 +11,7 @@ gem "bootsnap", require: false
 gem 'devise_token_auth'
 gem 'rack-cors'
 # Rendering
-gem 'jbuilder'
+gem 'jbuilder', '~> 2.10.1'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
