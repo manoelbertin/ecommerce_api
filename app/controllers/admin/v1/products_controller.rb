@@ -38,7 +38,7 @@ module Admin::V1
       @product = Product.find(params[:id])
     end
 
-    def run_service
+    def run_service(product = nil)
       @saving_service = Admin::ProductSavingService.new(product_params.to_h, @product)
       @saving_service.call
       @product = @saving_service.product
