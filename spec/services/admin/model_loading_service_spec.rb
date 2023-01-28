@@ -31,19 +31,12 @@ describe Admin::ModelLoadingService do
         expect(service.records.count).to eq 4
       end
       
-      #it "performs right :length following pagination" do
-        #service = described_class.new(SystemRequirement.all, params)
-       # service.call
-        #expect(service.records.count).to eq 4
-     # end
-
       it "do right search, order and pagination" do
         search_system_requirements.sort! { |a, b| b[:name] <=> a[:name] }
         service = described_class.new(SystemRequirement.all, params)
         service.call
         expected_system_requirements = search_system_requirements[4..7]
         expect(service.records).to contain_exactly *expected_system_requirements
-
       end
 
       it "sets right :page" do

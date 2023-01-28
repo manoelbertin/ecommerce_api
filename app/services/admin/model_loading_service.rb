@@ -22,6 +22,7 @@ module Admin
     private
 
     def search_records(searched)
+      # @params[:search][:name] & @params[:search][:video_board]
       return searched  unless @params.has_key?(:search)
       @params[:search].each do |key, value|
         searched = searched.like(key, value)
