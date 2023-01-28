@@ -20,7 +20,8 @@ RSpec.describe Product, type: :model do
 
   it_has_behavior_of "like searchable concern", :product, :name
 
-  it_behaves_like "name searchable concern", :product  
+  it_behaves_like "name searchable concern", :product
+  it_behaves_like "like searchable concern", :product, :name # <<<
   it_behaves_like "paginatable concern", :product
 
   it "creates as unfeatured by default" do

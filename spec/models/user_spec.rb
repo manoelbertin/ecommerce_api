@@ -7,6 +7,7 @@ RSpec.describe User, type: :model do
 
   it_has_behavior_of "like searchable concern", :user, :name
 
-  it_behaves_like "name searchable concern", :user
+  #it_behaves_like "name searchable concern", :user
   it_behaves_like "paginatable concern", :user
+  it_behaves_like "like searchable concern", :user, :name # <<<
 end

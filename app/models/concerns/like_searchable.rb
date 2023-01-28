@@ -4,6 +4,7 @@ module LikeSearchable
   included do
     scope :like, -> (key, value) do
       self.where(self.arel_table[key].matches("%#{value}%"))
+      #self.where("#{key} LIKE ?", "%#{value}%")
     end
   end
 end
@@ -14,4 +15,4 @@ end
       # .where("name LIKE '%#{params}%") problema segurança LIKE direto no params
       # .where("name LIKE '%%'; DELETE * FROM nome_tabela%") <<== Perigo Segurança
 
-      # estamos prendendo a query a uma tecnologia específica de Banco
+      # estamos prendendo a querie a uma tecnologia específica de Banco

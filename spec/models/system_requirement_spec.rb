@@ -14,5 +14,6 @@ RSpec.describe SystemRequirement, type: :model do
 
   it_behaves_like "paginatable concern", :system_requirement
 
-  it_behaves_like "name searchable concern", :system_requirement
+  #it_behaves_like "name searchable concern", :system_requirement
+  it_behaves_like "like searchable concern", :system_requirement, :name # <<<
 end
