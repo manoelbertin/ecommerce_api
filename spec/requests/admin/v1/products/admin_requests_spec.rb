@@ -450,5 +450,4 @@ def build_game_product_json(product)
   json['categories'] = product.categories.as_json
   json.merge! product.productable.as_json(only: %i(mode release_date developer))
   json['system_requirement'] = product.productable.system_requirement.as_json
-  json
 end
