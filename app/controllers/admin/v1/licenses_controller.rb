@@ -51,5 +51,12 @@ module Admin::V1
       return {} unless params.has_key?(:license)
       params.require(:license).permit(:id, :key, :platform, :status)
     end
+
+    def save_license!
+      @license.save!
+      render :show
+    rescue
+      render_error(fields: @license.errors.messages)
+    end
   end
 end
